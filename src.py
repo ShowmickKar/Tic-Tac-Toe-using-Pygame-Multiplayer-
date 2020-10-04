@@ -1,18 +1,12 @@
 import pygame
 pygame.init()
 
-run = True
-
 (width, length) = (590, 590)
 background_color = (0, 0, 0)
-
-# img = pygame.image.load('icon-linux-29.png')
 
 screen = pygame.display.set_mode((width, length))
 screen.fill(background_color)
 pygame.display.set_caption("TIC TAC TOE using Pygame(Multiplayer)")
-
-# screen.blit(img, (0, 0))
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -32,8 +26,6 @@ board_position_name = []
 board_position = []
 board_position_name.extend([0, first, second, third, fourth, fifth, sixth, seventh, eight, ninth])
 board_position.extend([0, [20, 20], [210, 20], [400, 20], [20, 210], [210, 210], [400, 210], [20, 400], [210, 400], [400, 400]])
-
-# print(board_position_name)
 
 grid = [0, "", "", "", "", "", "", "", "", ""]
 
@@ -77,54 +69,16 @@ def check_win():
 
 
 def check_draw():
-	pass
-
+	return not remaining_moves
 
 toggle: bool = True
 
-move = 9
+remaining_moves = 9
 
-while run:
+while True:
 	pygame.time.delay(100)
 	for event in pygame.event.get():
-		if check_win() != "No one":
-			if event.type == pygame.KEYDOWN:
-				if check_win() == "First Player":
-					# print(grid)
-					screen.fill((0, 0, 0))
-					pygame.display.update()
-					pygame.time.delay(1000)
-					text_surface= pygame.image.load("first_player.win.png")
-					screen.blit(text_surface, (0, 0))
-					pygame.display.update()
-					pygame.time.delay(1000)
-				elif check_win() == "Second Player":
-					# print(grid)
-					screen.fill((0, 0, 0))
-					pygame.display.update()
-					pygame.time.delay(1000)
-					text_surface = pygame.image.load("second_player_win.png")
-					screen.blit(text_surface, (0, 0))
-					pygame.display.update()
-					pygame.time.delay(1000)
-
-				pygame.quit()
-				quit()
-				raise SystemExit
-		if move == 0:
-			screen.fill((0, 0, 0))
-			pygame.display.update()
-			pygame.time.delay(1000)
-			text_surface = pygame.image.load("draw.png")
-			screen.blit(text_surface, (0, 0))
-			pygame.display.update()
-			pygame.time.delay(1000)
-			pygame.quit()
-			quit()
-			raise SystemExit
-
 		if event.type == pygame.QUIT:
-			run = False
 			pygame.quit()
 			quit()
 			raise SystemExit
@@ -150,7 +104,52 @@ while run:
 						# might use the following line instead
 						# board_position_name[position] = pygame.draw.rect(screen, (0, 255, 255), (board_position[position][0] + 30, board_position[position][1] + 30, 110, 110))
 						toggle = True
-					move -= 1
+
+					remaining_moves -= 1
+						
+		pygame.display.update()
+
+		if check_win() == "First Player":
+			pygame.time.delay(500)
+			screen.fill((0, 0, 0))
+			pygame.display.update()
+			text_surface= pygame.image.load("first_player.win.png")
+			screen.blit(text_surface, (0, 0))
+			pygame.display.update()
+			pygame.time.delay(1000)
+			pygame.quit()
+			quit()
+			raise SystemExit
+
+		if check_win() == "Second Player":
+			pygame.time.delay(500)
+			screen.fill((0, 0, 0))
+			pygame.display.update()
+			text_surface = pygame.image.load("second_player_win.png")
+			screen.blit(text_surface, (0, 0))
+			pygame.display.update()
+			pygame.time.delay(1000)
+			pygame.quit()
+			quit()
+			raise SystemExit
+
+		if check_draw():
+			pygame.time.delay(500)
+			screen.fill((0, 0, 0))
+			pygame.display.update()
+			text_surface = pygame.image.load("draw.png")
+			screen.blit(text_surface, (0, 0))
+			pygame.display.update()
+			pygame.time.delay(1000)
+			pygame.quit()
+			quit()
+			raise SystemExit
+
+		if event.type == pygame.QUIT:
+			run = False
+			pygame.quit()
+			quit()
+			raise SystemExit
 
 	pygame.display.flip()
 
