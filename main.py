@@ -5,6 +5,7 @@
 # I hope you enjoy!
 
 import pygame
+import sys
 pygame.init()
 
 (width, length) = (590, 590)
@@ -101,8 +102,9 @@ while True:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			pygame.quit()
-			quit()
-			raise SystemExit
+			# quit()
+			# raise SystemExit
+			sys.exit()
 
 		if pygame.MOUSEBUTTONUP == event.type:
 			click_position = pygame.mouse.get_pos()
@@ -139,8 +141,9 @@ while True:
 			pygame.display.update()
 			pygame.time.delay(1000)
 			pygame.quit()
-			quit()
-			raise SystemExit
+			# quit()
+			# raise SystemExit
+			sys.exit()
 
 		if check_win() == "Second Player":
 			pygame.time.delay(500)
@@ -151,8 +154,9 @@ while True:
 			pygame.display.update()
 			pygame.time.delay(1000)
 			pygame.quit()
-			quit()
-			raise SystemExit
+			# quit()
+			# raise SystemExit
+			sys.exit()
 
 		if check_draw():
 			pygame.time.delay(500)
@@ -163,14 +167,16 @@ while True:
 			pygame.display.update()
 			pygame.time.delay(1000)
 			pygame.quit()
-			quit()
-			raise SystemExit
+			# quit()
+			# raise SystemExit
+			sys.exit()
 
 		if event.type == pygame.QUIT:
 			run = False
 			pygame.quit()
-			quit()
-			raise SystemExit
+			# quit()
+			# raise SystemExit
+			sys.exit()
 
 	pygame.display.flip()
 
