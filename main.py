@@ -1,7 +1,7 @@
 # This is a multiplayer Tic Tac Toe game I made using the module Pygame
 # To run the source coude, you need to have python3 and pygame installed on your computer
 # If you are on windows, you can simply download this executable file(link is given below) to run it directly on you PC
-# Executable file link: https://github.com/ShowmickKar/Tic-Tac-Toe-using-Pygame-Multiplayer-/blob/main/TIC-TAC_Toe_Executable.rar
+# Executable file link: https://github.com/ShowmickKar/Tic-Tac-Toe-using-Pygame-Multiplayer-/blob/main/Tic-Tac-Toe%20Multiplayer(executable).rar
 # I hope you enjoy!
 
 import pygame
